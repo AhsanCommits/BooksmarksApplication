@@ -13,24 +13,26 @@ function showData() {
     for (const child of parseData) {
       const { id, name, url } = child;
       bookmarksResults.innerHTML +=
-        `
-        <div class="well">
-          <h3>
+        `<div class="card mb-lg-4 m-2">
+        <div class="card-body">
+          <h3 class="card-title mb-3 mt-3 text-dark text-uppercase text-center">
             ${name}
-            <a class="btn btn-default" target="_blank"  href="` +
+            <hr>
+            <a class="btn btn-dark" target="_blank"  href="` +
         `${url}` +
         `">Visit</a>
             <a class="btn btn-primary" href="#" onclick="editBookmark(` +
         `'${id}'` +
-        `)">Edit</a>
+        `),showHome()">Edit</a>
             <a class="btn btn-danger" href="#" onclick="removeBookmark(` +
         `'${id}'` +
         `)">Delete</a>
           </h3>
         </div>
+        </div>
+
       `;
     }
-    console.log(parseData);
   }
 }
 
@@ -51,7 +53,6 @@ function editBookmark(id) {
   let result = localStorage.getItem('bookmarks');
   let resultParse = JSON.parse(result);
   resultParse = resultParse.find((r) => r.id === id);
-  console.log(resultParse);
   siteName.value = resultParse.name;
   siteUrl.value = resultParse.url;
 }
@@ -95,3 +96,30 @@ form.addEventListener('submit', function (e) {
   this.reset();
 });
 showData();
+
+const home = document.querySelector('#home');
+const bookmarks = document.querySelector('#bookmarks');
+const footer = document.querySelector('footer');
+const list = () => {
+  home.classList.add('hidden');
+  home.classList.remove('visible');
+  bookmarks.classList.add('visible');
+  bookmarks.classList.remove('hidden');
+  footer.classList.add('footer');
+  footer.classList.remove('fixed-bottom');
+};
+function myFunction() {
+  list();
+}
+
+const Home = () => {
+  home.classList.add('visible');
+  home.classList.remove('hidden');
+  bookmarks.classList.add('hidden');
+  bookmarks.classList.remove('visible');
+  footer.classList.add('fixed-bottom');
+  footer.classList.remove('footer');
+};
+function showHome() {
+  Home();
+}
