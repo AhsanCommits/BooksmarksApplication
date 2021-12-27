@@ -1,0 +1,34 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.banner {
+  background: linear-gradient(to left, #007bff, #9198e5);
+}
+.form-control {
+  background: #f2f2f2;
+  border-radius: 0px;
+  border: none;
+}
+section {
+  overflow: hidden;
+}
+.hidden {
+  display: none;
+}
+.visible {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#bookmarksResults
+{
+  margin-bottom: 60px;
+}
+.footer{
+  position: relative;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
